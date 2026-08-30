@@ -7,7 +7,7 @@ const developmentSessionSecret = 'development-clue-secret-change-me';
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
-  MONGODB_URI: z.string().min(1).default('mongodb://127.0.0.1:27017/wurcluego'),
+  MONGODB_URI: z.string().min(1).default('mongodb+srv://jonathandhd:Jonnumber14@cluster0.fwdtteo.mongodb.net/wurcluego?retryWrites=true&w=majority&appName=Cluster0'),
   SESSION_SECRET: z.string().min(16).optional(),
   CORS_ORIGIN: z.string().optional(),
   ENABLE_DEV_TOOLS: z.enum(['true', 'false']).default('false'),
