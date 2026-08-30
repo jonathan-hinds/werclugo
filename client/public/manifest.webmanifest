@@ -1,0 +1,11 @@
+{
+  "name": "Wurcluego",
+  "short_name": "Wurcluego",
+  "description": "Get a clue.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08000f",
+  "theme_color": "#fbff12",
+  "orientation": "portrait-primary",
+  "icons": [{ "src": "/clue-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

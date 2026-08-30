@@ -1,0 +1,17 @@
+{
+  "name": "wurcluego",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=20.0.0" },
+  "workspaces": ["shared", "server", "client"],
+  "scripts": {
+    "dev": "npm run build -w @wurcluego/shared && concurrently -n API,WEB -c magenta,cyan \"npm run dev -w @wurcluego/server\" \"npm run dev -w @wurcluego/client\"",
+    "build": "npm run build -w @wurcluego/shared && npm run build -w @wurcluego/server && npm run build -w @wurcluego/client",
+    "start": "npm run start -w @wurcluego/server",
+    "test": "npm run test -w @wurcluego/server && npm run test -w @wurcluego/client",
+    "lint": "npm run lint -w @wurcluego/server && npm run lint -w @wurcluego/client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

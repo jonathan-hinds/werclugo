@@ -1,0 +1,26 @@
+:root {
+  --ink: #07000d;
+  --ink-2: #130521;
+  --panel: rgba(18, 5, 33, .86);
+  --panel-solid: #160628;
+  --acid: #efff18;
+  --cyan: #20f6ff;
+  --magenta: #ff32cf;
+  --orange: #ff6b18;
+  --violet: #8a36ff;
+  --white: #f8f7eb;
+  --muted: #afa8bc;
+  --danger: #ff385b;
+  --line: rgba(32, 246, 255, .25);
+  --shadow-cyan: 0 0 18px rgba(32, 246, 255, .36);
+  --shadow-acid: 0 0 22px rgba(239, 255, 24, .28);
+  --shadow-pink: 0 0 24px rgba(255, 50, 207, .3);
+  --font-display: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  --font-tech: 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif;
+  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 3px;
+  --radius: 9px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: dark;
+}
