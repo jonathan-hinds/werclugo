@@ -67,7 +67,7 @@ On PowerShell:
 Copy-Item .env.example .env
 ```
 
-Set `MONGODB_URI` and a private `SESSION_SECRET`, then run:
+Set `MONGODB_URI`, then run:
 
 ```bash
 npm run dev
@@ -80,7 +80,7 @@ The client runs at `http://localhost:5173` and proxies `/api` to the Express ser
 | Variable | Required | Description |
 | --- | --- | --- |
 | `MONGODB_URI` | Yes | MongoDB or Atlas connection URI. The database can be empty. |
-| `SESSION_SECRET` | Yes in production | At least 16 characters; signs deterministic clue item identities. Changing it changes generated world items. |
+| `SESSION_SECRET` | No | Optional 16+ character override. When omitted in production, a stable secret is derived from `MONGODB_URI`; changing either value changes generated world items. |
 | `PORT` | Render supplies it | HTTP port, default `3000`. |
 | `NODE_ENV` | Yes in production | `development`, `test`, or `production`. |
 | `CORS_ORIGIN` | Development only | Comma-separated client origins; defaults to `http://localhost:5173`. Production uses same-origin requests. |
@@ -125,7 +125,7 @@ In production, Express finds `client/dist`, serves hashed assets, and falls back
 - Build command: `npm ci && npm run build`
 - Start command: `npm start`
 - Health check path: `/api/health`
-- Environment: `NODE_ENV=production`, `MONGODB_URI=...`, `SESSION_SECRET=...`
+- Environment: `NODE_ENV=production`, `MONGODB_URI=...`. `SESSION_SECRET` is optional.
 
 No separate static site or frontend service is required. Render supplies `PORT`, and the server listens on `0.0.0.0`.
 

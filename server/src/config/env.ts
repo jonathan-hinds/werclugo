@@ -1,11 +1,14 @@
 import 'dotenv/config';
+import { createHash } from 'node:crypto';
 import { z } from 'zod';
+
+const developmentSessionSecret = 'development-clue-secret-change-me';
 
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
   MONGODB_URI: z.string().min(1).default('mongodb://127.0.0.1:27017/wurcluego'),
-  SESSION_SECRET: z.string().min(16).default('development-clue-secret-change-me'),
+  SESSION_SECRET: z.string().min(16).optional(),
   CORS_ORIGIN: z.string().optional(),
   ENABLE_DEV_TOOLS: z.enum(['true', 'false']).default('false'),
 });
@@ -17,16 +20,20 @@ if (!parsed.success) {
   process.exit(1);
 }
 
-if (parsed.data.NODE_ENV === 'production' && parsed.data.SESSION_SECRET === 'development-clue-secret-change-me') {
-  console.error('SESSION_SECRET must be explicitly configured in production.');
-  process.exit(1);
-}
+const sessionSecret = parsed.data.SESSION_SECRET ?? (
+  parsed.data.NODE_ENV === 'production'
+    ? createHash('sha256')
+        .update('wurcluego-session-v1\0')
+        .update(parsed.data.MONGODB_URI)
+        .digest('hex')
+    : developmentSessionSecret
+);
 
 export const env = {
   nodeEnv: parsed.data.NODE_ENV,
   port: parsed.data.PORT,
   mongoUri: parsed.data.MONGODB_URI,
-  sessionSecret: parsed.data.SESSION_SECRET,
+  sessionSecret,
   corsOrigin: parsed.data.CORS_ORIGIN,
   devTools: parsed.data.NODE_ENV !== 'production' && parsed.data.ENABLE_DEV_TOOLS === 'true',
 };
