@@ -4,6 +4,8 @@
 
 Wurcluego is a production-capable, mobile-first clue interpretation system. It includes a ceremonial navigation lock, persistent anonymous profiles, a camera-capable pseudo-AR Clue Sniffer, deterministic location-cell items, Clue Gobbler encounters, a server-authoritative economy, and a procedurally linked 45,000,000-piece collaborative puzzle.
 
+For the canonical product intent, tone, domain rules, and guidance for future coding agents, read [`PROJECT_MANIFEST.md`](./PROJECT_MANIFEST.md).
+
 The application is a TypeScript npm-workspace monorepo. A single Express process serves both the versioned REST API and the compiled React application in production, making it suitable for direct deployment to Render from a GitHub repository.
 
 ## Product systems
